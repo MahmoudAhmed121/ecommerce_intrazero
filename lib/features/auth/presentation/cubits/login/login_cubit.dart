@@ -11,9 +11,7 @@ class LoginCubit extends Cubit<LoginState> {
   final FocusNode emailFocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
 
-  test(){
-    debugPrint('test login cubittttttttttttttttttt ${emailCon.text}');
-  }
+  test() {}
 
   @override
   Future<void> close() {

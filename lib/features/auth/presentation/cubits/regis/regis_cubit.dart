@@ -18,4 +18,21 @@ class RegisCubit extends Cubit<RegisState> {
   final FocusNode passOneFocusNode = FocusNode();
   final FocusNode passTwoFocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+
+  @override
+  Future<void> close() {
+    nameCon.dispose();
+    emailCon.dispose();
+    phoneCon.dispose();
+    addressCon.dispose();
+    passOneCon.dispose();
+    passTwoCon.dispose();
+    nameFocusNode.dispose();
+    phoneFocusNode.dispose();
+    addressFocusNode.dispose();
+    emailFocusNode.dispose();
+    passOneFocusNode.dispose();
+    passTwoFocusNode.dispose();
+    return super.close();
+  }
 }

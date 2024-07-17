@@ -1,5 +1,4 @@
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
