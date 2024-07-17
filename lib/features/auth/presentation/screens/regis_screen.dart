@@ -1,3 +1,4 @@
+import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/auth/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +32,8 @@ class RegisScreen extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    const HaveAcountSection()
+                    const HaveAcountSection(),
+                    const RegisBlocListner(),
                   ],
                 ),
               ),
@@ -40,7 +42,9 @@ class RegisScreen extends StatelessWidget {
         ),
       ),
       bottomSheet: CustomBottomsheet(
-        onPressed: () {},
+        onPressed: () {
+          CubitsLocator.regisCubit.createAccount();
+        },
         text: 'Login',
       ),
     );

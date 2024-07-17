@@ -105,7 +105,6 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
             InkWell(
               onTap: widget.onTap,
               child: SizedBox(
-                height: widget.height,
                 width: widget.width ?? MediaQuery.sizeOf(context).width * .92,
                 child: TextFormField(
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
@@ -125,7 +124,6 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                         : '',
                     fillColor: widget.bgColor,
                     hintText: widget.hint,
-
                     suffixIcon: widget.suffixIcon != null
                         ? IconButton(
                             icon: widget.suffixIcon!,

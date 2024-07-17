@@ -9,3 +9,6 @@ export 'presentation/widgets/login_logo_section.dart';
 export 'presentation/widgets/have_account_section.dart';
 export 'presentation/widgets/regis_form_faild_section.dart';
 export 'presentation/widgets/regis_logo_section.dart';
+export 'data/models/user_model.dart';
+export 'presentation/widgets/bloc_listner/regis_bloc_listner.dart';
+export 'presentation/widgets/bloc_listner/login_bloc_listner.dart';

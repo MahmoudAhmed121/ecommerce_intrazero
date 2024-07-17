@@ -20,11 +20,14 @@ class _LoginFormFaildSectionState extends State<LoginFormFaildSection> {
   @override
   void initState() {
     super.initState();
+
     emailCon = CubitsLocator.loginCubit.emailCon;
     passCon = CubitsLocator.loginCubit.passCon;
     emailFocusNode = CubitsLocator.loginCubit.emailFocusNode;
     passFocusNode = CubitsLocator.loginCubit.passFocusNode;
     formKey = CubitsLocator.loginCubit.formKey;
+
+    CubitsLocator.loginCubit.reInit();
   }
 
   @override
@@ -48,7 +51,6 @@ class _LoginFormFaildSectionState extends State<LoginFormFaildSection> {
             height: 15.h,
           ),
           DefaultTextFormField(
-            height: 50.h,
             controller: passCon,
             focusNode: passFocusNode,
             label: '',
@@ -59,14 +61,16 @@ class _LoginFormFaildSectionState extends State<LoginFormFaildSection> {
             onEditingComplete: () {
               FocusScope.of(context).unfocus();
             },
-            suffixIcon: IconButton(
-              onPressed: () {
+            suffixIcon: InkWell(
+              onTap: () {
                 setState(() {
                   obscureText = !obscureText;
                 });
               },
-              icon: const Icon(Icons.visibility),
-              color: AppColor.kEnableDotColor,
+              child: const Icon(
+                Icons.visibility,
+                color: AppColor.kEnableDotColor,
+              ),
             ),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:ecommerce_intrazero/core/export.dart';
+import 'package:ecommerce_intrazero/core/services/locator/firestore_locator.dart';
 import 'package:ecommerce_intrazero/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +12,7 @@ Future<void> initializeApp() async {
   await CacheHelper.init();
 
   CubitsLocator.setup();
+  FirestoreLocator.setup();
   await ScreenUtil.ensureScreenSize();
 
   await Firebase.initializeApp(

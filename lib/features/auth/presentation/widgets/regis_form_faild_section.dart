@@ -46,114 +46,128 @@ class _RegisFormFaildSectionState extends State<RegisFormFaildSection> {
     passOneFocusNode = CubitsLocator.regisCubit.passOneFocusNode;
     passTwoFocusNode = CubitsLocator.regisCubit.passTwoFocusNode;
     formKey = CubitsLocator.regisCubit.formKey;
+
+     CubitsLocator.regisCubit.reInit();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DefaultTextFormField(
-          controller: nameCon,
-          focusNode: nameFocusNode,
-          label: '',
-          textInputType: TextInputType.name,
-          hint: 'Full Name',
-          validator: MyValidators.validateName,
-          onEditingComplete: () {
-            FocusScope.of(context).requestFocus(emailFocusNode);
-          },
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        DefaultTextFormField(
-          controller: emailCon,
-          focusNode: emailFocusNode,
-          label: '',
-          textInputType: TextInputType.emailAddress,
-          hint: 'Your Email',
-          validator: MyValidators.emailValidator,
-          onEditingComplete: () {
-            FocusScope.of(context).requestFocus(phoneFocusNode);
-          },
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        DefaultTextFormField(
-          controller: passOneCon,
-          focusNode: phoneFocusNode,
-          label: '',
-          textInputType: TextInputType.number,
-          hint: 'Your Phone',
-          validator: MyValidators.isValidateMobile,
-          onEditingComplete: () {
-            FocusScope.of(context).requestFocus(addressFocusNode);
-          },
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        DefaultTextFormField(
-          controller: addressCon,
-          focusNode: addressFocusNode,
-          label: '',
-          textInputType: TextInputType.streetAddress,
-          hint: 'Your Address',
-          validator: MyValidators.emailValidator,
-          onEditingComplete: () {
-            FocusScope.of(context).requestFocus(passOneFocusNode);
-          },
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        DefaultTextFormField(
-          controller: passOneCon,
-          focusNode: passOneFocusNode,
-          label: '',
-          textInputType: TextInputType.visiblePassword,
-          hint: 'Password',
-          obscureText: obscureTextOne,
-          suffixIcon: IconButton(
-            onPressed: () {
-              setState(() {
-                obscureTextOne = !obscureTextOne;
-              });
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          DefaultTextFormField(
+            controller: nameCon,
+            focusNode: nameFocusNode,
+            label: '',
+            textInputType: TextInputType.name,
+            hint: 'Full Name',
+            validator: MyValidators.validateName,
+            onEditingComplete: () {
+              FocusScope.of(context).requestFocus(emailFocusNode);
             },
-            icon: const Icon(Icons.visibility),
-            color: AppColor.kEnableDotColor,
           ),
-          validator: MyValidators.emailValidator,
-          onEditingComplete: () {
-            FocusScope.of(context).requestFocus(passTwoFocusNode);
-          },
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        DefaultTextFormField(
-          controller: passTwoCon,
-          focusNode: passTwoFocusNode,
-          label: '',
-          textInputType: TextInputType.visiblePassword,
-          obscureText: obscureTextTwo,
-          hint: 'Password Again',
-          suffixIcon: IconButton(
-            onPressed: () {
-              setState(() {
-                obscureTextTwo = !obscureTextTwo;
-              });
+          SizedBox(
+            height: 15.h,
+          ),
+          DefaultTextFormField(
+            controller: emailCon,
+            focusNode: emailFocusNode,
+            label: '',
+            textInputType: TextInputType.emailAddress,
+            hint: 'Your Email',
+            validator: MyValidators.emailValidator,
+            onEditingComplete: () {
+              FocusScope.of(context).requestFocus(phoneFocusNode);
             },
-            icon: const Icon(Icons.visibility),
-            color: AppColor.kEnableDotColor,
           ),
-          validator: MyValidators.emailValidator,
-          onEditingComplete: () {
-            FocusScope.of(context).unfocus();
-          },
-        ),
-      ],
+          SizedBox(
+            height: 15.h,
+          ),
+          DefaultTextFormField(
+            controller: phoneCon,
+            focusNode: phoneFocusNode,
+            label: '',
+            textInputType: TextInputType.number,
+            hint: 'Your Phone',
+            validator: MyValidators.isValidateMobile,
+            onEditingComplete: () {
+              FocusScope.of(context).requestFocus(addressFocusNode);
+            },
+          ),
+          SizedBox(
+            height: 15.h,
+          ),
+          DefaultTextFormField(
+            controller: addressCon,
+            focusNode: addressFocusNode,
+            label: '',
+            textInputType: TextInputType.streetAddress,
+            hint: 'Your Address',
+            validator: MyValidators.validateAddress,
+            onEditingComplete: () {
+              FocusScope.of(context).requestFocus(passOneFocusNode);
+            },
+          ),
+          SizedBox(
+            height: 15.h,
+          ),
+          DefaultTextFormField(
+            controller: passOneCon,
+            focusNode: passOneFocusNode,
+            label: '',
+            textInputType: TextInputType.visiblePassword,
+            hint: 'Password',
+            obscureText: obscureTextOne,
+            suffixIcon: InkWell(
+              onTap: () {
+                setState(() {
+                  obscureTextOne = !obscureTextOne;
+                });
+              },
+              child: const Icon(
+                Icons.visibility,
+                color: AppColor.kEnableDotColor,
+              ),
+            ),
+            validator: MyValidators.passwordValidator,
+            onEditingComplete: () {
+              FocusScope.of(context).requestFocus(passTwoFocusNode);
+            },
+          ),
+          SizedBox(
+            height: 15.h,
+          ),
+          DefaultTextFormField(
+            controller: passTwoCon,
+            focusNode: passTwoFocusNode,
+            label: '',
+            textInputType: TextInputType.visiblePassword,
+            obscureText: obscureTextTwo,
+            hint: 'Password Again',
+            suffixIcon: InkWell(
+              onTap: () {
+                setState(() {
+                  obscureTextTwo = !obscureTextTwo;
+                });
+              },
+              child: const Icon(
+                Icons.visibility,
+                color: AppColor.kEnableDotColor,
+              ),
+            ),
+            validator: (value) {
+              return MyValidators.repeatPasswordValidator(
+                value: value,
+                password: passOneCon.text,
+              );
+            },
+            onEditingComplete: () {
+              FocusScope.of(context).unfocus();
+            },
+          ),
+        ],
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_intrazero/features/auth/presentation/screens/regis_screen.dart';
 import 'package:ecommerce_intrazero/features/auth/presentation/screens/splash_screen.dart';
+import 'package:ecommerce_intrazero/features/home_layout/presentation/screens/home_layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,8 +19,8 @@ class AppRouter {
       case loginScreen:
         return MaterialPageRoute(
           builder: (context) {
-            return BlocProvider(
-              create: (context) => CubitsLocator.loginCubit,
+            return BlocProvider.value(
+              value: CubitsLocator.loginCubit,
               child: const LoginScreen(),
             );
           },
@@ -28,7 +29,17 @@ class AppRouter {
       case registerScreen:
         return MaterialPageRoute(
           builder: (context) {
-            return const RegisScreen();
+            return BlocProvider.value(
+              value: CubitsLocator.regisCubit,
+              child: const RegisScreen(),
+            );
+          },
+        );
+
+      case homeLayout:
+        return MaterialPageRoute(
+          builder: (context) {
+            return const HomeLayoutScreen();
           },
         );
     }

@@ -27,7 +27,8 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 20.h,
                 ),
-                const DontHaveAccountSection()
+                const DontHaveAccountSection(),
+                const LoginBlocListner(),
               ],
             ),
           ),
@@ -35,7 +36,7 @@ class LoginScreen extends StatelessWidget {
       ),
       bottomSheet: CustomBottomsheet(
         onPressed: () {
-          CubitsLocator.loginCubit.test();
+          CubitsLocator.loginCubit.login();
         },
         text: 'Sign Up',
       ),

@@ -55,7 +55,7 @@ class MyValidators {
   }
 
   static String? isValidateMobile(String? value) {
-    const String pattern = r'^(10|11|12|15)[0-9]{8}$';
+    const String pattern = r'^(010|011|012|015)[0-9]{8}$';
     final RegExp regExp = RegExp(pattern);
     if (value!.isEmpty) {
       return 'Please Enter Your Mobile Number';
