@@ -1,8 +1,5 @@
 import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/home/export.dart';
-import 'package:ecommerce_intrazero/features/home/presentation/widgets/category_list_widget.dart';
-import 'package:ecommerce_intrazero/features/home/presentation/widgets/header_text_widget.dart';
-import 'package:ecommerce_intrazero/features/home/presentation/widgets/product_item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                   headerTitle: "Categories",
                 ),
               ),
-              
+
               const CategoryList(),
 
               const SliverToBoxAdapter(

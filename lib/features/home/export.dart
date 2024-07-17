@@ -5,3 +5,6 @@ export 'data/model/banner_model.dart';
 export 'presentation/widgets/home_slider.dart';
 export 'presentation/widgets/home_app_bar.dart';
 export 'presentation/widgets/category_item_view.dart';
+export 'presentation/widgets/category_list_widget.dart';
+export 'presentation/widgets/header_text_widget.dart';
+export 'presentation/widgets/product_item_view.dart';

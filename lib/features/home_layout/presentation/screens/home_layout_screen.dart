@@ -38,7 +38,7 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
             backgroundColor: Colors.white,
             indicatorColor: Colors.white,
             height: kBottomNavigationBarHeight + 10.h,
-            elevation: 1,
+            elevation: 0,
             selectedIndex: state.currentIndex!,
             onDestinationSelected: (value) =>
                 CubitsLocator.homeLayoutCubit.changeIndex(value),
