@@ -1,5 +1,5 @@
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/core/helpers/extensions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,13 +13,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      navigatorScreen();
+      navigate();
     });
     super.initState();
   }
 
-  navigatorScreen() {
-    context.pushReplacementNamed(loginScreen);
+  void navigate() {
+    FirebaseAuth.instance.signOut();
+    if (FirebaseAuth.instance.currentUser != null) {
+      context.pushReplacementNamed(homeLayout);
+    } else {
+      context.pushReplacementNamed(loginScreen);
+    }
   }
 
   @override
@@ -38,11 +43,11 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Positioned(
-            bottom: -55,
-            right: -50,
+            bottom: -150,
+            right: -150,
             child: Image.asset(
               'assets/images/logo.png',
-              width: MediaQuery.sizeOf(context).width * 0.5,
+              width: MediaQuery.sizeOf(context).width * 0.9,
             ),
           ),
         ],

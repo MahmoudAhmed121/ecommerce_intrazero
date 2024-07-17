@@ -9,3 +9,6 @@ export '/core/utils/constants/app_style.dart';
 export '/core/utils/my_validator.dart';
 export '/core/utils/widgets/default_text_form_field.dart';
 export '/core/utils/widgets/custom_text_button.dart';
+export '/core/helpers/extensions.dart';
+export '/core/utils/collection_named.dart';
+export '/core/firestore/collections/user_collection.dart';
