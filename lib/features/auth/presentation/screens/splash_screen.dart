@@ -13,12 +13,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      // navigatorScreen();
+      navigate();
     });
     super.initState();
   }
 
-  navigatorScreen() {
+  void navigate() {
     FirebaseAuth.instance.signOut();
     if (FirebaseAuth.instance.currentUser != null) {
       context.pushReplacementNamed(homeLayout);
