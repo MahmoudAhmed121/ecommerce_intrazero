@@ -11,6 +11,7 @@ class HomeLayoutState {
 
   static HomeLayoutState initial = HomeLayoutState._(
     status: HomeLayoutStateStatus.initial,
+    currentIndex: 0,
   );
 
   HomeLayoutState._({
