@@ -12,3 +12,5 @@ export '/core/utils/widgets/custom_text_button.dart';
 export '/core/helpers/extensions.dart';
 export '/core/utils/collection_named.dart';
 export '/core/firestore/collections/user_collection.dart';
+export '/core/utils/widgets/search_field_appbar.dart';
+export '/core/utils/widgets/home_app_bar.dart';

@@ -42,6 +42,7 @@ dependencies:
   lottie: ^3.1.2
   delightful_toast: ^1.1.0
   flutter_svg: ^2.0.10+1
+  carousel_slider: ^4.2.1
   
 
   # ---------------- Firebase ----------------
