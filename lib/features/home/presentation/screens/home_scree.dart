@@ -1,6 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/features/home/data/model/banner_model.dart';
+import 'package:ecommerce_intrazero/features/home/export.dart';
+import 'package:ecommerce_intrazero/features/home/presentation/widgets/category_list_widget.dart';
+import 'package:ecommerce_intrazero/features/home/presentation/widgets/header_text_widget.dart';
+import 'package:ecommerce_intrazero/features/home/presentation/widgets/product_item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,40 +22,38 @@ class HomeScreen extends StatelessWidget {
                     CubitsLocator.homeLayoutCubit.state.currentIndex!,
                 scrolled: true,
               ),
+              const HomeSlider(),
               SliverToBoxAdapter(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0.h),
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                      height: 170.0.h,
-                      enlargeCenterPage: true,
-                      autoPlay: true,
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enableInfiniteScroll: true,
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
-                      viewportFraction: 1,
-                    ),
-                    items: bannerList.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            width: MediaQuery.sizeOf(context).width,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.r),
-                              child: Image.asset(
-                                bannerList[bannerList.indexOf(i)].image,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
+                child: SizedBox(
+                  height: 20.h,
                 ),
               ),
+              const SliverToBoxAdapter(
+                child: HeaderTextWidget(
+                  headerTitle: "Categories",
+                ),
+              ),
+              
+              const CategoryList(),
+
+              const SliverToBoxAdapter(
+                child: HeaderTextWidget(
+                  headerTitle: "Products",
+                ),
+              ),
+              SliverGrid(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: MediaQuery.sizeOf(context).width * 0.5,
+                  crossAxisSpacing: 0.0,
+                  childAspectRatio: 1,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return const ProductItem();
+                  },
+                  childCount: 10,
+                ),
+              )
             ],
           ),
         ),

@@ -79,6 +79,7 @@ dependencies:
   retrofit: ^4.1.0
   retrofit_generator: ^8.1.0
   fancy_shimmer_image: ^2.0.3
+  cached_network_image: ^3.3.1
   
 
 dev_dependencies:
