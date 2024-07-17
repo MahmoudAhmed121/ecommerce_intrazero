@@ -15,7 +15,7 @@ class DefaultTextFormField extends StatefulWidget {
   final Color? textColor;
   final String hint;
   final bool isDense;
-  final bool isPassword;
+  final bool obscureText;
   final int? maxLength;
   final EdgeInsetsGeometry? contentPadding;
   final EdgeInsetsGeometry? margin;
@@ -52,7 +52,7 @@ class DefaultTextFormField extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.suffixIconPressed,
-    this.isPassword = false,
+    this.obscureText = false,
     this.isClickable = true,
     this.hint = '',
     this.counterText = '',
@@ -105,6 +105,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
             InkWell(
               onTap: widget.onTap,
               child: SizedBox(
+                height: widget.height,
                 width: widget.width ?? MediaQuery.sizeOf(context).width * .92,
                 child: TextFormField(
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
@@ -124,7 +125,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                         : '',
                     fillColor: widget.bgColor,
                     hintText: widget.hint,
-                    
+
                     suffixIcon: widget.suffixIcon != null
                         ? IconButton(
                             icon: widget.suffixIcon!,
@@ -155,7 +156,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                       : widget.onChanged,
                   validator: widget.validator,
                   keyboardType: widget.textInputType,
-                  obscureText: widget.isPassword,
+                  obscureText: widget.obscureText,
                   enabled: widget.isClickable,
                 ),
               ),
