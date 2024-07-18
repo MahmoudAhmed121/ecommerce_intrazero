@@ -14,7 +14,8 @@ class CustomBottomsheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: kBottomNavigationBarHeight + 5.h,
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
+      height: kBottomNavigationBarHeight + 10.h,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         border: const Border(
@@ -22,7 +23,7 @@ class CustomBottomsheet extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 7.h),
+        padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 10.h),
         child: CustomTextButton(
           onPressed: onPressed,
           text: text,

@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-  void navigate() {
+  void navigate() async {
     FirebaseAuth.instance.signOut();
     if (FirebaseAuth.instance.currentUser != null) {
       context.pushReplacementNamed(homeLayout);

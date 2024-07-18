@@ -10,7 +10,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
   final pageController = PageController();
 
-  List<Widget> bottomNavScreens = const [
+  List<Widget> screens = const [
     HomeScreen(),
     CartScreen(),
     ProfileScreen(),
