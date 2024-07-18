@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/auth/export.dart';
+import 'package:ecommerce_intrazero/features/home/export.dart';
 import 'package:ecommerce_intrazero/features/home_layout/export.dart';
 import 'package:get_it/get_it.dart';
 
-class CubitsLocator {
+
+class ServiceLocator {
   static final GetIt locator = GetIt.instance;
 
   static void setup() {
@@ -19,6 +21,15 @@ class CubitsLocator {
 
     // register
     locator.registerLazySingleton<RegisCubit>(() => RegisCubit());
+
+    // products
+    locator.registerFactory<ProductRepo>(() => ProductRepo(locator()));
+    locator
+        .registerLazySingleton<ProductsCubit>(() => ProductsCubit(locator()));
+
+    // categorie
+    locator.registerFactory<CategoryRepo>(() => CategoryRepo(locator()));
+    locator.registerLazySingleton<CategoryCubit>(() => CategoryCubit(locator()));
   }
 
   static HomeLayoutCubit get homeLayoutCubit => locator<HomeLayoutCubit>();
@@ -26,4 +37,8 @@ class CubitsLocator {
   static LoginCubit get loginCubit => locator<LoginCubit>();
 
   static RegisCubit get regisCubit => locator<RegisCubit>();
+
+  static ProductsCubit get productsCubit => locator<ProductsCubit>();
+
+  static CategoryCubit get categoryCubit => locator<CategoryCubit>();
 }

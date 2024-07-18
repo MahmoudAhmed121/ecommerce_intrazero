@@ -1,4 +1,5 @@
 import 'package:ecommerce_intrazero/core/export.dart';
+import 'package:ecommerce_intrazero/features/home/data/model/category_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItemView extends StatelessWidget {
@@ -6,7 +7,9 @@ class CategoryItemView extends StatelessWidget {
   const CategoryItemView({
     super.key,
     required this.onTap,
+    required this.categoryModel,
   });
+  final CategoryModel categoryModel;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +29,11 @@ class CategoryItemView extends StatelessWidget {
                   Radius.circular(4.0),
                 ),
               ),
-              child: const Center(
+              child: Center(
                 child: CustomNetworkImage(
                   fit: BoxFit.cover,
-                  imageUrl:
-                      'https://img.freepik.com/free-vector/product-card-design-template_23-2149687359.jpg?t=st=1721244621~exp=1721248221~hmac=67520874f0305e0a19f6a71cbc84976f6acdd1c5a373a3c17659f28071cb5bae&w=1380',
-                  placeholderWidget: EmptyGreyContainer(
+                  imageUrl: categoryModel.image,
+                  placeholderWidget: const EmptyGreyContainer(
                     height: 150,
                     width: 120,
                   ),
@@ -39,11 +41,11 @@ class CategoryItemView extends StatelessWidget {
               ),
             ),
           ),
-          const Flexible(
+          Flexible(
             flex: 1,
             child: Text(
-              'Test',
-              style: TextStyle(
+              categoryModel.name,
+              style: const TextStyle(
                 overflow: TextOverflow.visible,
                 color: AppColor.kActiveTextColor,
               ),

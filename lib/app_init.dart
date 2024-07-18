@@ -11,7 +11,7 @@ Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
 
-  CubitsLocator.setup();
+  ServiceLocator.setup();
   FirestoreLocator.setup();
   await ScreenUtil.ensureScreenSize();
 

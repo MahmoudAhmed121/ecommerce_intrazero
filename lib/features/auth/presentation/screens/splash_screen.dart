@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (FirebaseAuth.instance.currentUser != null) {
       context.pushReplacementNamed(homeLayout);
     } else {
-      context.pushReplacementNamed(loginScreen);
+      context.pushReplacementNamed(homeLayout);
     }
   }
 

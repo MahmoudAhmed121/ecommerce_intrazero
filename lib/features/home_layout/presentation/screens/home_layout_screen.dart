@@ -19,7 +19,7 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
   void initState() {
     super.initState();
 
-    _pageController = CubitsLocator.homeLayoutCubit.pageController;
+    _pageController = ServiceLocator.homeLayoutCubit.pageController;
   }
 
   @override
@@ -29,7 +29,7 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
-        children: CubitsLocator.homeLayoutCubit.screens,
+        children: ServiceLocator.homeLayoutCubit.screens,
       ),
       bottomNavigationBar: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
         builder: (context, state) {
@@ -41,7 +41,7 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
             elevation: 0,
             selectedIndex: state.currentIndex!,
             onDestinationSelected: (value) =>
-                CubitsLocator.homeLayoutCubit.changeIndex(value),
+                ServiceLocator.homeLayoutCubit.changeIndex(value),
             destinations: const [
               NavigationDestination(
                 icon: HomeLayoutButton(

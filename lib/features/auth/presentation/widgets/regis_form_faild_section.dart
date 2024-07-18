@@ -32,22 +32,22 @@ class _RegisFormFaildSectionState extends State<RegisFormFaildSection> {
   void initState() {
     super.initState();
 
-    nameCon = CubitsLocator.regisCubit.nameCon;
-    emailCon = CubitsLocator.regisCubit.emailCon;
-    phoneCon = CubitsLocator.regisCubit.phoneCon;
-    addressCon = CubitsLocator.regisCubit.addressCon;
-    passOneCon = CubitsLocator.regisCubit.passOneCon;
-    passTwoCon = CubitsLocator.regisCubit.passTwoCon;
+    nameCon = ServiceLocator.regisCubit.nameCon;
+    emailCon = ServiceLocator.regisCubit.emailCon;
+    phoneCon = ServiceLocator.regisCubit.phoneCon;
+    addressCon = ServiceLocator.regisCubit.addressCon;
+    passOneCon = ServiceLocator.regisCubit.passOneCon;
+    passTwoCon = ServiceLocator.regisCubit.passTwoCon;
 
-    nameFocusNode = CubitsLocator.regisCubit.nameFocusNode;
-    phoneFocusNode = CubitsLocator.regisCubit.phoneFocusNode;
-    addressFocusNode = CubitsLocator.regisCubit.addressFocusNode;
-    emailFocusNode = CubitsLocator.regisCubit.emailFocusNode;
-    passOneFocusNode = CubitsLocator.regisCubit.passOneFocusNode;
-    passTwoFocusNode = CubitsLocator.regisCubit.passTwoFocusNode;
-    formKey = CubitsLocator.regisCubit.formKey;
+    nameFocusNode = ServiceLocator.regisCubit.nameFocusNode;
+    phoneFocusNode = ServiceLocator.regisCubit.phoneFocusNode;
+    addressFocusNode = ServiceLocator.regisCubit.addressFocusNode;
+    emailFocusNode = ServiceLocator.regisCubit.emailFocusNode;
+    passOneFocusNode = ServiceLocator.regisCubit.passOneFocusNode;
+    passTwoFocusNode = ServiceLocator.regisCubit.passTwoFocusNode;
+    formKey = ServiceLocator.regisCubit.formKey;
 
-     CubitsLocator.regisCubit.reInit();
+    ServiceLocator.regisCubit.reInit();
   }
 
   @override

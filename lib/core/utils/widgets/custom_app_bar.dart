@@ -2,7 +2,6 @@ import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
@@ -19,7 +18,6 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return SliverAppBar(
       centerTitle: centerTitle,
       backgroundColor: AppColor.kBackGroundColor,
@@ -28,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
       title: title != null
           ? Text(
               title!,
-              style: textTheme.headlineLarge,
+              style: AppStyle.font17_700Weight,
             )
           : const SizedBox(),
       leading: Padding(
