@@ -33,7 +33,7 @@ class CategoryItemView extends StatelessWidget {
                       'https://img.freepik.com/free-vector/product-card-design-template_23-2149687359.jpg?t=st=1721244621~exp=1721248221~hmac=67520874f0305e0a19f6a71cbc84976f6acdd1c5a373a3c17659f28071cb5bae&w=1380',
                   placeholderWidget: EmptyGreyContainer(
                     height: 150,
-                    width: 110,
+                    width: 120,
                   ),
                 ),
               ),
