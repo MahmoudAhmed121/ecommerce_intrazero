@@ -60,6 +60,21 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
               ),
               NavigationDestination(
                 icon: HomeLayoutButton(
+                  image: 'assets/images/category.svg',
+                  title: 'Categorys',
+                  imageColor: AppColor.kTextColor,
+                  titleColor: AppColor.kTextColor,
+                ),
+                selectedIcon: HomeLayoutButton(
+                  image: 'assets/images/category.svg',
+                  imageColor: AppColor.kPrimaryColor,
+                  titleColor: AppColor.kTextColor,
+                  title: 'Categorys',
+                ),
+                label: "",
+              ),
+              NavigationDestination(
+                icon: HomeLayoutButton(
                   image: 'assets/images/shopping_cart.svg',
                   title: 'Unknown',
                   titleColor: AppColor.kTextColor,

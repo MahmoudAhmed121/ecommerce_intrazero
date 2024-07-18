@@ -26,7 +26,7 @@ class HomeAppBar extends StatelessWidget {
           stretch: true,
           centerTitle: false,
           leadingWidth: 0.0,
-          title: currentHomeTab == 1
+          title: currentHomeTab == 2
               ? RichText(
                   text: TextSpan(
                     text: 'Cart: ',

@@ -1,5 +1,4 @@
 import 'package:ecommerce_intrazero/features/category/export.dart';
-import 'package:ecommerce_intrazero/features/home/export.dart';
 
 enum CategoryStateStatus {
   initial,

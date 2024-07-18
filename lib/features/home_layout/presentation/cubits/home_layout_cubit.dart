@@ -1,4 +1,5 @@
 import 'package:ecommerce_intrazero/features/cart/export.dart';
+import 'package:ecommerce_intrazero/features/category/presentation/screens/category_screen.dart';
 import 'package:ecommerce_intrazero/features/home/export.dart';
 import 'package:ecommerce_intrazero/features/home_layout/export.dart';
 import 'package:ecommerce_intrazero/features/profile/export.dart';
@@ -12,6 +13,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
   List<Widget> screens = const [
     HomeScreen(),
+    CategoryScreen(),
     CartScreen(),
     ProfileScreen(),
   ];
