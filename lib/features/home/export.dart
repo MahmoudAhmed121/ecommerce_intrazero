@@ -18,4 +18,6 @@ export 'presentation/cubits/category/category_cubit.dart';
 export 'data/repos/category_repo/category_repo.dart';
 export 'presentation/widgets/product_loading_grid.dart';
 export 'presentation/widgets/home_product_widget.dart';
+export 'data/repos/all_products_repo/all_products_repo.dart';
+
 

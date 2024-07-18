@@ -5,6 +5,7 @@ import 'package:ecommerce_intrazero/features/auth/presentation/screens/splash_sc
 import 'package:ecommerce_intrazero/features/home/export.dart';
 import 'package:ecommerce_intrazero/features/home_layout/presentation/screens/home_layout_screen.dart';
 import 'package:ecommerce_intrazero/features/product_details/presentation/screens/product_details_screen.dart';
+import 'package:ecommerce_intrazero/features/search/presentation/screens/search_sreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,7 +49,20 @@ class AppRouter {
       case productDetailsScreen:
         return MaterialPageRoute(
           builder: (context) {
-            return  ProductDetailsScreen(categoryProductModel: routeSettings.arguments as CategoryProductModel,);
+            return ProductDetailsScreen(
+              categoryProductModel:
+                  routeSettings.arguments as CategoryProductModel,
+            );
+          },
+        );
+
+      case searchScreen:
+        return MaterialPageRoute(
+          builder: (context) {
+            return BlocProvider.value(
+              value: ServiceLocator.searchCubit,
+              child: const SearchScreen(),
+            );
           },
         );
     }

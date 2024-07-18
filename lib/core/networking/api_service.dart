@@ -24,4 +24,9 @@ abstract class ApiService {
   Future<CategoryResponseBody> getProductByCategoryName(
     @Path("categoryName") String categoryName,
   );
+
+  @GET('${ApiConstants.search}{product}')
+  Future<CategoryResponseBody> serachProduct(
+    @Path("product") String categoryName,
+  );
 }

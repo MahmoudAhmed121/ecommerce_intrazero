@@ -8,21 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/home_slider_widget.dart';
 
-class ProductDetailsScreen extends StatefulWidget {
+class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key, this.categoryProductModel});
   final CategoryProductModel? categoryProductModel;
 
-  @override
-  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
-}
-
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-   
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +20,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         child: CustomScrollView(
           slivers: [
             CustomAppBar(
-              title: widget.categoryProductModel!.title,
+              title: categoryProductModel!.title,
             ),
             SliverToBoxAdapter(
               child: HomeSliderWidget(
-                sliderImages: widget.categoryProductModel!.images,
-                itemCount: widget.categoryProductModel!.images.length,
+                sliderImages: categoryProductModel!.images,
+                itemCount: categoryProductModel!.images.length,
               ),
             ),
             SliverToBoxAdapter(
@@ -52,9 +41,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          widget.categoryProductModel!.title,
+                          categoryProductModel!.title,
                           overflow: TextOverflow.ellipsis,
-                          style: AppStyle.font20_600Weight,
+                          style: AppStyle.font17_700Weight,
                         ),
                         Container(
                           height: 32,
@@ -73,7 +62,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ],
                     ),
                     RatingBarWidget(
-                      currentRating: widget.categoryProductModel!.rating,
+                      currentRating: categoryProductModel!.rating,
                       ignoreGestures: true,
                       itemSize: 35.w,
                     ),
@@ -82,7 +71,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: widget.categoryProductModel!.price.toString(),
+                        text: categoryProductModel!.price.toString(),
                         style: AppStyle.font18_600Weight
                             .copyWith(color: AppColor.kSecondaryColor),
                         children: [
@@ -92,7 +81,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                           TextSpan(
                             text:
-                                '${widget.categoryProductModel!.discountPercentage} % off',
+                                '${categoryProductModel!.discountPercentage} % off',
                             style: AppStyle.font18_600Weight.copyWith(
                               decoration: TextDecoration.lineThrough,
                               color: AppColor.kPrimaryColor,
@@ -122,7 +111,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       height: 10.h,
                     ),
                     Text(
-                      widget.categoryProductModel!.description,
+                      categoryProductModel!.description,
                       textAlign: TextAlign.justify,
                       style: AppStyle.font15_500Weight,
                     ),
@@ -167,10 +156,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(widget.categoryProductModel!
+                            Text(categoryProductModel!
                                 .reviews[index].reviewerName),
                             RatingBarWidget(
-                              currentRating: widget.categoryProductModel!
+                              currentRating: categoryProductModel!
                                   .reviews[index].rating
                                   .toInt()
                                   .toDouble(),
@@ -180,14 +169,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ],
                         ),
                         subtitle: Text(
-                          widget.categoryProductModel!.reviews[index].reviewerEmail,
+                          categoryProductModel!.reviews[index].reviewerEmail,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 25.h),
                         child: Text(
-                          widget.categoryProductModel!.reviews[index].comment,
+                          categoryProductModel!.reviews[index].comment,
                           textAlign: TextAlign.justify,
                           style: AppStyle.font15_500Weight,
                         ),
@@ -195,7 +184,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   );
                 },
-                childCount: widget.categoryProductModel!.reviews.length,
+                childCount: categoryProductModel!.reviews.length,
               ),
             ),
             SliverToBoxAdapter(
@@ -213,4 +202,5 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
+
 //ReviewProductListViewWidget

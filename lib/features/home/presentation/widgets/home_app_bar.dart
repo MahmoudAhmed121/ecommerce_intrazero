@@ -48,7 +48,7 @@ class HomeAppBar extends StatelessWidget {
                     child: SearchFieldAppbar(
                       readOnly: true,
                       onTap: () {
-                        // Navigator.pushNamed(context, searchScreen);
+                        context.pushNamed(searchScreen);
                       },
                     ),
                   ),
