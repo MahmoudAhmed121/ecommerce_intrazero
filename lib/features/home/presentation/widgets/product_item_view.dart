@@ -17,7 +17,9 @@ class ProductItem extends StatelessWidget {
         categoryProductModel != null && categoryProductModel!.id % 3 != 0;
     final bool hasProductsOddIndex = products != null && products!.id % 3 != 0;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(productDetailsScreen, arguments: categoryProductModel);
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(

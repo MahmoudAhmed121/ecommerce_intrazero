@@ -1,4 +1,5 @@
 const String splashScreen = '/';
 const String loginScreen = '/login';
 const String registerScreen = '/register';
-const String homeLayout = '/home_layout';
+const String homeLayoutScreen = '/home_layout';
+const String productDetailsScreen = '/product_details_screen';

@@ -85,45 +85,15 @@ class _CategoryHomeProductScreenState extends State<CategoryHomeProductScreen> {
             builder: (context, state) {
               if (state.status == CategoryStateStatus.loading &&
                   state.categoryProducts != null) {
-                return SliverGrid(
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: MediaQuery.sizeOf(context).width * 0.5,
-                    crossAxisSpacing: 0.0,
-                    childAspectRatio: 1,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0, vertical: 10.0),
-                        child: EmptyGreyContainer(
-                          width: MediaQuery.sizeOf(context).width,
-                        ),
-                      );
-                    },
-                    childCount: 10,
-                  ),
-                );
+                return const ProductLodaingGrid();
               }
               if (state.status == CategoryStateStatus.error) {
                 return SliverToBoxAdapter(
                   child: Center(child: Text(state.errorMessage ?? 'Error')),
                 );
               }
-              return SliverGrid(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: MediaQuery.sizeOf(context).width * 0.5,
-                  crossAxisSpacing: 0.0,
-                  childAspectRatio: 1,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return ProductItem(
-                      categoryProductModel: state.categoryProducts![index],
-                    );
-                  },
-                  childCount: state.categoryProducts!.length,
-                ),
+              return HomeProductWidget(
+                categoryProducts: state.categoryProducts,
               );
             },
           ),

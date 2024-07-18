@@ -42,8 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: scrollController,
             slivers: [
               HomeAppBar(
-                currentHomeTab:
-                    ServiceLocator.homeLayoutCubit.state.currentIndex!,
+                currentHomeTab: ServiceLocator.homeLayoutCubit.state.currentIndex!,
                 scrolled: true,
               ),
               const HomeSlider(),
@@ -58,6 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const CategoryList(),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 20.h,
+                ),
+              ),
               const SliverToBoxAdapter(
                 child: HeaderTextWidget(
                   headerTitle: "Products",
@@ -71,56 +75,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (context, state) {
                   if (state.status == ProductStateStatus.loading &&
                       state.products!.isEmpty) {
-                    return SliverGrid(
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent:
-                            MediaQuery.sizeOf(context).width * 0.5,
-                        crossAxisSpacing: 0.0,
-                        childAspectRatio: 1,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 10.0),
-                            child: EmptyGreyContainer(
-                              width: MediaQuery.sizeOf(context).width,
-                            ),
-                          );
-                        },
-                        childCount: 10,
-                      ),
-                    );
+                    return const ProductLodaingGrid();
                   }
                   if (state.status == ProductStateStatus.error) {
                     return SliverToBoxAdapter(
                       child: Center(child: Text(state.errorMessage ?? 'Error')),
                     );
                   }
-                  return SliverGrid(
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent:
-                          MediaQuery.sizeOf(context).width * 0.5,
-                      crossAxisSpacing: 0.0,
-                      childAspectRatio: 1,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        if (index < state.products!.length) {
-                          return ProductItem(
-                            products: state.products![index],
-                          );
-                        }
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16.0, vertical: 10.0),
-                          child: EmptyGreyContainer(
-                            width: MediaQuery.sizeOf(context).width,
-                          ),
-                        );
-                      },
-                      childCount: state.products!.length,
-                    ),
+                  return HomeProductWidget(
+                    products: state.products!,
                   );
                 },
               ),
