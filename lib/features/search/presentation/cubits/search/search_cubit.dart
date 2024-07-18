@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/features/home/export.dart';
-import 'package:ecommerce_intrazero/features/search/data/repo/search_repo.dart/search_repo.dart';
+import 'package:ecommerce_intrazero/features/category/export.dart';
+import 'package:ecommerce_intrazero/features/search/export.dart';
 import 'package:flutter/material.dart';
 
 part 'search_state.dart';

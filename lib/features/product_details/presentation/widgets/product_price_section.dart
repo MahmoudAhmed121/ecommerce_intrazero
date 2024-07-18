@@ -1,5 +1,5 @@
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/features/home/export.dart';
+import 'package:ecommerce_intrazero/features/category/export.dart';
 import 'package:ecommerce_intrazero/features/product_details/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,25 +55,46 @@ class ProductPriceSection extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            RichText(
-              text: TextSpan(
-                text: categoryProductModel!.price.toString(),
-                style: AppStyle.font18_600Weight
-                    .copyWith(color: AppColor.kSecondaryColor),
-                children: [
-                  TextSpan(
-                    text: ' EGP  ',
-                    style: AppStyle.font18_600Weight,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: categoryProductModel!.price.toString(),
+                    style: AppStyle.font18_600Weight
+                        .copyWith(color: AppColor.kSecondaryColor),
+                    children: [
+                      TextSpan(
+                        text: ' EGP  ',
+                        style: AppStyle.font18_600Weight,
+                      ),
+                      TextSpan(
+                        text:
+                            '${categoryProductModel!.discountPercentage} % off',
+                        style: AppStyle.font18_600Weight.copyWith(
+                          decoration: TextDecoration.lineThrough,
+                          color: AppColor.kPrimaryColor,
+                        ),
+                      ),
+                    ],
                   ),
-                  TextSpan(
-                    text: '${categoryProductModel!.discountPercentage} % off',
-                    style: AppStyle.font18_600Weight.copyWith(
-                      decoration: TextDecoration.lineThrough,
-                      color: AppColor.kPrimaryColor,
-                    ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: categoryProductModel!.stock.toString(),
+                    style: AppStyle.font14_700Weight
+                        .copyWith(color: AppColor.kLightGreen),
+                    children: [
+                      TextSpan(
+                        text: ' Pieces are available',
+                        style: AppStyle.font14_700Weight.copyWith(
+                          color: AppColor.kLightGreen,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

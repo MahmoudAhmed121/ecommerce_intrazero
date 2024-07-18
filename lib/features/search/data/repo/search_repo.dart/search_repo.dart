@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/features/home/export.dart';
+import 'package:ecommerce_intrazero/features/category/export.dart';
+
 
 class SearchRepo {
   final ApiService apiService;

@@ -16,7 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    ServiceLocator.productsCubit.getProducts();
     super.initState();
     scrollController.addListener(() {
       loadMore();
@@ -28,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
             scrollController.position.maxScrollExtent &&
         ServiceLocator.productsCubit.state.products!.length <
             ServiceLocator.productsCubit.state.total!) {
-      ServiceLocator.productsCubit.getProducts();
+      ServiceLocator.productsCubit.getPagenationProducts();
     }
   }
 
@@ -42,7 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: scrollController,
             slivers: [
               HomeAppBar(
-                currentHomeTab: ServiceLocator.homeLayoutCubit.state.currentIndex!,
+                currentHomeTab:
+                    ServiceLocator.homeLayoutCubit.state.currentIndex!,
                 scrolled: true,
               ),
               const HomeSlider(),

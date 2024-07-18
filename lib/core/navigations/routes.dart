@@ -2,7 +2,7 @@ import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_intrazero/features/auth/presentation/screens/regis_screen.dart';
 import 'package:ecommerce_intrazero/features/auth/presentation/screens/splash_screen.dart';
-import 'package:ecommerce_intrazero/features/home/export.dart';
+import 'package:ecommerce_intrazero/features/category/export.dart';
 import 'package:ecommerce_intrazero/features/home_layout/presentation/screens/home_layout_screen.dart';
 import 'package:ecommerce_intrazero/features/product_details/presentation/screens/product_details_screen.dart';
 import 'package:ecommerce_intrazero/features/search/presentation/screens/search_sreen.dart';

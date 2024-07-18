@@ -1,6 +1,6 @@
 import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/auth/export.dart';
-import 'package:ecommerce_intrazero/features/home/export.dart';
+import 'package:ecommerce_intrazero/features/category/export.dart';
 import 'package:ecommerce_intrazero/features/product_details/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

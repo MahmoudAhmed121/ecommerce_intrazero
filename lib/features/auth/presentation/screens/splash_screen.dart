@@ -15,6 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 4), () {
       Future.wait([
         ServiceLocator.allProductsCubit.getAllProducts(),
+        ServiceLocator.productsCubit.getPagenationProducts(),
       ]);
       navigate();
     });

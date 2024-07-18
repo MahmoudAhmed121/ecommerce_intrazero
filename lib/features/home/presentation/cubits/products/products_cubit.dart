@@ -6,7 +6,7 @@ class ProductsCubit extends Cubit<ProductState> {
 
   final ProductRepo _productRepo;
 
-  Future<void> getProducts() async {
+  Future<void> getPagenationProducts() async {
     emit(state.loading());
 
     final response = await _productRepo.getProducts(
@@ -19,7 +19,7 @@ class ProductsCubit extends Cubit<ProductState> {
       final updatedProducts = List<ProductResponseModel>.from(state.products!)
         ..addAll(data.products);
       emit(
-        state.success(updatedProducts,data.total),
+        state.success(updatedProducts, data.total),
       );
     }, failure: (message) {
       emit(

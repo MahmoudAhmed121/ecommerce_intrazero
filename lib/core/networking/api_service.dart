@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_intrazero/core/export.dart';
-import 'package:ecommerce_intrazero/features/home/data/model/category/category_response_body.dart';
+import 'package:ecommerce_intrazero/features/category/data/models/category/category_response_body.dart';
 import 'package:ecommerce_intrazero/features/home/export.dart';
 import 'package:retrofit/retrofit.dart';
 
