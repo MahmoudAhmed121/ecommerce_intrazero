@@ -23,3 +23,4 @@ export '/core/cubits/slider/slider_movement_cubit.dart';
 export '/core/cubits/all_products/all_products_state.dart';
 export '/core/logic/debouncer.dart';
 export '/core/cubits/all_products/all_products_cubit.dart';
+export '/core/utils/widgets/default_user_avatar.dart';
