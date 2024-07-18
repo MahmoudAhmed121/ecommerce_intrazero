@@ -25,7 +25,7 @@ class HomeProductWidget extends StatelessWidget {
                   categoryProductModel: categoryProducts![index],
                 )
               : ProductItem(
-                  products: products![index],
+                  pagenationProduct: products![index],
                 );
         },
         childCount:

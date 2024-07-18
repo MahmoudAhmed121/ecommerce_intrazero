@@ -1,5 +1,6 @@
 import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/core/utils/widgets/default_user_avatar.dart';
+import 'package:ecommerce_intrazero/features/auth/export.dart';
 import 'package:ecommerce_intrazero/features/home/data/model/category/category_response_body.dart';
 import 'package:ecommerce_intrazero/features/product_details/presentation/widgets/rating_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +8,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/home_slider_widget.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, this.categoryProductModel});
   final CategoryProductModel? categoryProductModel;
+
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +31,12 @@ class ProductDetailsScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             CustomAppBar(
-              title: categoryProductModel!.title,
+              title: widget.categoryProductModel!.title,
             ),
             SliverToBoxAdapter(
               child: HomeSliderWidget(
-                sliderImages: categoryProductModel!.images,
-                itemCount: categoryProductModel!.images.length,
+                sliderImages: widget.categoryProductModel!.images,
+                itemCount: widget.categoryProductModel!.images.length,
               ),
             ),
             SliverToBoxAdapter(
@@ -39,7 +52,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          categoryProductModel!.title,
+                          widget.categoryProductModel!.title,
                           overflow: TextOverflow.ellipsis,
                           style: AppStyle.font20_600Weight,
                         ),
@@ -60,7 +73,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       ],
                     ),
                     RatingBarWidget(
-                      currentRating: categoryProductModel!.rating,
+                      currentRating: widget.categoryProductModel!.rating,
                       ignoreGestures: true,
                       itemSize: 35.w,
                     ),
@@ -69,7 +82,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: categoryProductModel!.price.toString(),
+                        text: widget.categoryProductModel!.price.toString(),
                         style: AppStyle.font18_600Weight
                             .copyWith(color: AppColor.kSecondaryColor),
                         children: [
@@ -79,7 +92,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           ),
                           TextSpan(
                             text:
-                                '${categoryProductModel!.discountPercentage} % off',
+                                '${widget.categoryProductModel!.discountPercentage} % off',
                             style: AppStyle.font18_600Weight.copyWith(
                               decoration: TextDecoration.lineThrough,
                               color: AppColor.kPrimaryColor,
@@ -109,7 +122,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       height: 10.h,
                     ),
                     Text(
-                      categoryProductModel!.description,
+                      widget.categoryProductModel!.description,
                       textAlign: TextAlign.justify,
                       style: AppStyle.font15_500Weight,
                     ),
@@ -154,10 +167,10 @@ class ProductDetailsScreen extends StatelessWidget {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(categoryProductModel!
+                            Text(widget.categoryProductModel!
                                 .reviews[index].reviewerName),
                             RatingBarWidget(
-                              currentRating: categoryProductModel!
+                              currentRating: widget.categoryProductModel!
                                   .reviews[index].rating
                                   .toInt()
                                   .toDouble(),
@@ -167,14 +180,14 @@ class ProductDetailsScreen extends StatelessWidget {
                           ],
                         ),
                         subtitle: Text(
-                          categoryProductModel!.reviews[index].reviewerEmail,
+                          widget.categoryProductModel!.reviews[index].reviewerEmail,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 25.h),
                         child: Text(
-                          categoryProductModel!.reviews[index].comment,
+                          widget.categoryProductModel!.reviews[index].comment,
                           textAlign: TextAlign.justify,
                           style: AppStyle.font15_500Weight,
                         ),
@@ -182,11 +195,20 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   );
                 },
-                childCount: categoryProductModel!.reviews.length,
+                childCount: widget.categoryProductModel!.reviews.length,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 40.h,
               ),
             )
           ],
         ),
+      ),
+      bottomSheet: CustomBottomsheet(
+        onPressed: () {},
+        text: 'Add To Cart',
       ),
     );
   }

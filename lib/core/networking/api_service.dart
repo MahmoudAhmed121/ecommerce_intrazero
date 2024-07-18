@@ -10,6 +10,9 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
+  @GET(ApiConstants.products)
+  Future<CategoryResponseBody> getAllProducts();
+
   @GET('${ApiConstants.products}?limit={limit}&skip={skip}&select={select}')
   Future<ProductsResponse> getProducts(
     @Path("limit") int limit,
