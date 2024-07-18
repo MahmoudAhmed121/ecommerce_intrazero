@@ -9,9 +9,11 @@ Widget buildAppWithProviders({required Widget child}) {
         create: (_) => ServiceLocator.homeLayoutCubit,
       ),
       BlocProvider(
+        create: (_) => ServiceLocator.allProductsCubit,
+      ),
+      BlocProvider(
         create: (_) => ServiceLocator.productsCubit,
       ),
-      
     ],
     child: child,
   );

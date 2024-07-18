@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:ecommerce_intrazero/core/cubits/all_products/all_products_cubit.dart';
 import 'package:ecommerce_intrazero/core/export.dart';
 import 'package:ecommerce_intrazero/features/auth/export.dart';
+import 'package:ecommerce_intrazero/features/home/data/repos/all_products_repo/all_products_repo.dart';
 import 'package:ecommerce_intrazero/features/home/export.dart';
 import 'package:ecommerce_intrazero/features/home_layout/export.dart';
 import 'package:get_it/get_it.dart';
@@ -24,12 +26,15 @@ class ServiceLocator {
 
     // products
     locator.registerFactory<ProductRepo>(() => ProductRepo(locator()));
-    locator
-        .registerLazySingleton<ProductsCubit>(() => ProductsCubit(locator()));
+    locator.registerLazySingleton<ProductsCubit>(() => ProductsCubit(locator()));
 
     // categorie
     locator.registerFactory<CategoryRepo>(() => CategoryRepo(locator()));
     locator.registerLazySingleton<CategoryCubit>(() => CategoryCubit(locator()));
+
+    // all products
+    locator.registerFactory<AllProductsRepo>(() => AllProductsRepo(locator()));
+    locator.registerLazySingleton<AllProductsCubit>(() => AllProductsCubit(locator()));
   }
 
   static HomeLayoutCubit get homeLayoutCubit => locator<HomeLayoutCubit>();
@@ -41,4 +46,6 @@ class ServiceLocator {
   static ProductsCubit get productsCubit => locator<ProductsCubit>();
 
   static CategoryCubit get categoryCubit => locator<CategoryCubit>();
+
+  static AllProductsCubit get allProductsCubit => locator<AllProductsCubit>();
 }

@@ -21,7 +21,7 @@ class CategoryState {
   static CategoryState initial = CategoryState._(
     status: CategoryStateStatus.initial,
     errorMessage: null,
-    categoryProducts: null,
+    categoryProducts: [],
   );
 
   CategoryState init() => copyWith(status: CategoryStateStatus.initial);

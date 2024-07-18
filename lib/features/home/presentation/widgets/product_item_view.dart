@@ -5,19 +5,20 @@ import 'package:flutter/material.dart';
 class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
-    this.products,
+    this.pagenationProduct,
     this.categoryProductModel,
   });
-  final ProductResponseModel? products;
+  final ProductResponseModel? pagenationProduct;
   final CategoryProductModel? categoryProductModel;
 
   @override
   Widget build(BuildContext context) {
-    final bool hasCategoryProductOddIndex =
-        categoryProductModel != null && categoryProductModel!.id % 3 != 0;
-    final bool hasProductsOddIndex = products != null && products!.id % 3 != 0;
+    final bool hasCategoryProductOddIndex = categoryProductModel != null && categoryProductModel!.id % 3 != 0;
+    final bool hasProductsOddIndex = pagenationProduct != null && pagenationProduct!.id % 3 != 0;
+
+    
     return GestureDetector(
-      onTap: () {},
+      onTap: () => _onProductTap(context),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
@@ -32,9 +33,9 @@ class ProductItem extends StatelessWidget {
                     height: 130,
                     child: CustomNetworkImage(
                       radius: 5,
-                      imageUrl: products == null
+                      imageUrl: pagenationProduct == null
                           ? categoryProductModel!.images.first
-                          : products!.thumbnail,
+                          : pagenationProduct!.thumbnail,
                       width: MediaQuery.sizeOf(context).width,
                       placeholderWidget: EmptyGreyContainer(
                         width: MediaQuery.sizeOf(context).width,
@@ -87,9 +88,9 @@ class ProductItem extends StatelessWidget {
             Flexible(
               flex: 1,
               child: Text(
-                products == null
+                pagenationProduct == null
                     ? categoryProductModel!.title
-                    : products!.title,
+                    : pagenationProduct!.title,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: AppColor.kActiveTextColor,
@@ -100,9 +101,9 @@ class ProductItem extends StatelessWidget {
               flex: 1,
               child: RichText(
                 text: TextSpan(
-                  text: products == null
+                  text: pagenationProduct == null
                       ? '${categoryProductModel!.price}' ' ' 'EGP' "  "
-                      : '${products!.price}' ' ' 'EGP' "  ",
+                      : '${pagenationProduct!.price}' ' ' 'EGP' "  ",
                   style: const TextStyle(
                     color: AppColor.kTextColor,
                   ),
@@ -123,5 +124,17 @@ class ProductItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onProductTap(BuildContext context) {
+    if (categoryProductModel == null) {
+      final productDetails =
+          ServiceLocator.allProductsCubit.state.allProductList!.firstWhere(
+        (product) => product.id == pagenationProduct!.id,
+      );
+      context.pushNamed(productDetailsScreen, arguments: productDetails);
+    } else {
+      context.pushNamed(productDetailsScreen, arguments: categoryProductModel);
+    }
   }
 }

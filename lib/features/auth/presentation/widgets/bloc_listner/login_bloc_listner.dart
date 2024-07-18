@@ -18,7 +18,7 @@ class LoginBlocListner extends StatelessWidget {
         switch (state.status) {
           case LoginStateStatus.suscess:
             context.pop();
-            context.pushReplacementNamed(homeLayout);
+            context.pushReplacementNamed(homeLayoutScreen);
             break;
           case LoginStateStatus.error:
             context.pop();

@@ -18,7 +18,7 @@ class RegisBlocListner extends StatelessWidget {
         switch (state.status) {
           case RegisStateStatus.suscess:
             context.pop();
-            context.pushReplacementNamed(homeLayout);
+            context.pushReplacementNamed(homeLayoutScreen);
             break;
           case RegisStateStatus.error:
             context.pop();
