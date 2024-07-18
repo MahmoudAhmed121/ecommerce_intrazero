@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
       ),
       bottomSheet: CustomBottomsheet(
         onPressed: () {
-          CubitsLocator.loginCubit.login();
+          ServiceLocator.loginCubit.login();
         },
         text: 'Sign Up',
       ),

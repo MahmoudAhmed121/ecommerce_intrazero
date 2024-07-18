@@ -6,8 +6,12 @@ Widget buildAppWithProviders({required Widget child}) {
   return MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (_) => CubitsLocator.homeLayoutCubit,
+        create: (_) => ServiceLocator.homeLayoutCubit,
       ),
+      BlocProvider(
+        create: (_) => ServiceLocator.productsCubit,
+      ),
+      
     ],
     child: child,
   );

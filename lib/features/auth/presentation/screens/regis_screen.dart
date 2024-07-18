@@ -43,7 +43,7 @@ class RegisScreen extends StatelessWidget {
       ),
       bottomSheet: CustomBottomsheet(
         onPressed: () {
-          CubitsLocator.regisCubit.createAccount();
+          ServiceLocator.regisCubit.createAccount();
         },
         text: 'Login',
       ),

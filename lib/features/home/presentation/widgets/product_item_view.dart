@@ -1,13 +1,21 @@
 import 'package:ecommerce_intrazero/core/export.dart';
+import 'package:ecommerce_intrazero/features/home/export.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
+    this.products,
+    this.categoryProductModel,
   });
+  final ProductResponseModel? products;
+  final CategoryProductModel? categoryProductModel;
 
   @override
   Widget build(BuildContext context) {
+    final bool hasCategoryProductOddIndex =
+        categoryProductModel != null && categoryProductModel!.id % 3 != 0;
+    final bool hasProductsOddIndex = products != null && products!.id % 3 != 0;
     return GestureDetector(
       onTap: () {},
       child: Padding(
@@ -24,8 +32,9 @@ class ProductItem extends StatelessWidget {
                     height: 130,
                     child: CustomNetworkImage(
                       radius: 5,
-                      imageUrl:
-                          'https://img.freepik.com/free-vector/product-card-design-template_23-2149687359.jpg?t=st=1721244621~exp=1721248221~hmac=67520874f0305e0a19f6a71cbc84976f6acdd1c5a373a3c17659f28071cb5bae&w=1380',
+                      imageUrl: products == null
+                          ? categoryProductModel!.images.first
+                          : products!.thumbnail,
                       width: MediaQuery.sizeOf(context).width,
                       placeholderWidget: EmptyGreyContainer(
                         width: MediaQuery.sizeOf(context).width,
@@ -46,42 +55,43 @@ class ProductItem extends StatelessWidget {
                       size: 17,
                     ),
                   ),
-
-                  // Discount rounded container
-
-                  Align(
-                    alignment: AlignmentDirectional.topEnd,
-                    child: Container(
-                      height: 20,
-                      width: 50,
-                      decoration: const BoxDecoration(
-                        color: AppColor.kPrimaryColor,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(5),
-                          topLeft: Radius.circular(5),
-                        ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Discount',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
+                  hasCategoryProductOddIndex || hasProductsOddIndex
+                      ? const SizedBox()
+                      : Align(
+                          alignment: AlignmentDirectional.topEnd,
+                          child: Container(
+                            height: 20,
+                            width: 50,
+                            decoration: const BoxDecoration(
+                              color: AppColor.kPrimaryColor,
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(5),
+                                topLeft: Radius.circular(5),
+                              ),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Discount',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10.0,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
             const SizedBox(height: 4.0),
-            const Flexible(
+            Flexible(
               flex: 1,
               child: Text(
-                'Test',
-                style: TextStyle(
-                  fontFamily: 'NoteSans-SemiBold',
+                products == null
+                    ? categoryProductModel!.title
+                    : products!.title,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
                   color: AppColor.kActiveTextColor,
                 ),
               ),
@@ -89,17 +99,18 @@ class ProductItem extends StatelessWidget {
             Flexible(
               flex: 1,
               child: RichText(
-                text: const TextSpan(
-                  text: '100' ' ' 'EGP' "  ",
-                  style: TextStyle(
+                text: TextSpan(
+                  text: products == null
+                      ? '${categoryProductModel!.price}' ' ' 'EGP' "  "
+                      : '${products!.price}' ' ' 'EGP' "  ",
+                  style: const TextStyle(
                     color: AppColor.kTextColor,
                   ),
-                  children: [
+                  children: const [
                     TextSpan(
                       text: '200 ' 'EGP',
                       style: TextStyle(
-                        fontFamily: 'NoteSans-Light',
-                        color: AppColor.kTextColor,
+                        color: AppColor.kPrimaryColor,
                         fontSize: 14.0,
                         decoration: TextDecoration.lineThrough,
                       ),

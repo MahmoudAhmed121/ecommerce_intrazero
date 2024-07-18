@@ -20,7 +20,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) {
             return BlocProvider.value(
-              value: CubitsLocator.loginCubit,
+              value: ServiceLocator.loginCubit,
               child: const LoginScreen(),
             );
           },
@@ -30,7 +30,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) {
             return BlocProvider.value(
-              value: CubitsLocator.regisCubit,
+              value: ServiceLocator.regisCubit,
               child: const RegisScreen(),
             );
           },

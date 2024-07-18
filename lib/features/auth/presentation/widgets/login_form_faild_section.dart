@@ -21,13 +21,13 @@ class _LoginFormFaildSectionState extends State<LoginFormFaildSection> {
   void initState() {
     super.initState();
 
-    emailCon = CubitsLocator.loginCubit.emailCon;
-    passCon = CubitsLocator.loginCubit.passCon;
-    emailFocusNode = CubitsLocator.loginCubit.emailFocusNode;
-    passFocusNode = CubitsLocator.loginCubit.passFocusNode;
-    formKey = CubitsLocator.loginCubit.formKey;
+    emailCon = ServiceLocator.loginCubit.emailCon;
+    passCon = ServiceLocator.loginCubit.passCon;
+    emailFocusNode = ServiceLocator.loginCubit.emailFocusNode;
+    passFocusNode = ServiceLocator.loginCubit.passFocusNode;
+    formKey = ServiceLocator.loginCubit.formKey;
 
-    CubitsLocator.loginCubit.reInit();
+    ServiceLocator.loginCubit.reInit();
   }
 
   @override
